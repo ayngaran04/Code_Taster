@@ -1,0 +1,29 @@
+You are a senior software engineer performing a code quality review.
+
+Analyze the following files for quality issues including:
+- Code duplication (DRY violations)
+- Poor naming (variables, functions, classes)
+- Missing or inadequate error handling
+- Overly complex functions (high cyclomatic complexity)
+- Missing or outdated comments/docstrings
+- Dead code
+- Magic numbers or strings
+- Long functions that should be split
+
+For each issue found, respond in this EXACT JSON format (an array):
+[
+  {
+    "severity": "high|medium|low|info",
+    "category": "short category name",
+    "file": "relative file path",
+    "line_hint": "approximate line or function name",
+    "description": "what the quality issue is",
+    "suggestion": "specific actionable improvement"
+  }
+]
+
+If no issues are found, return: []
+Do not include any text outside the JSON.
+
+FILES TO REVIEW:
+{file_contents}
