@@ -1,8 +1,8 @@
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.messages import HumanMessage
-from core.state import ReviewState
+from research_system.core.state import ReviewState
 from config import MODEL_NAME,MAX_TOKENS
-from agents.security_agent import format_files_for_prompt, load_prompt, parse_llm_responses
+from research_system.agents.security_agent import format_files_for_prompt, load_prompt, parse_llm_responses
 
 def run_architecture_agent(state:ReviewState)-> ReviewState:
     llm  = GoogleGenerativeAI(model=MODEL_NAME, max_tokens=MAX_TOKENS, temperature=0.5)

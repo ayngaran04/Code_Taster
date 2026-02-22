@@ -1,9 +1,9 @@
 from langgraph.graph import StateGraph, END
-from core.state import ReviewState
-from agents.security_agent import run_security_agent
-from agents.architeture_agent import run_architecture_agent
-from agents.code_quality_agent import run_code_quality_agent
-from agents.outputText import run_synthesizer_agent
+from research_system.core.state import ReviewState
+from research_system.agents.security_agent import run_security_agent
+from research_system.agents.architeture_agent import run_architecture_agent
+from research_system.agents.code_quality_agent import run_code_quality_agent
+from research_system.agents.outputText import run_synthesizer_agent
 
 def build_graph() -> StateGraph:
     graph = StateGraph(ReviewState)

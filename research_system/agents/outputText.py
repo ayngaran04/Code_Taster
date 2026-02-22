@@ -1,4 +1,4 @@
-from core.state import ReviewState
+from research_system.core.state import ReviewState
 from collections import defaultdict
 from datetime import datetime
 

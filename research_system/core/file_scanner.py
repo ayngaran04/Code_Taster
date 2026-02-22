@@ -1,7 +1,7 @@
 import os
 from typing import List
 from config import SUPPORTED_EXTENSIONS,MAX_FILE_SIZE_KB,MAX_TOKENS,EXCLUDED_DIRS
-from core.state import Fileinfo
+from research_system.core.state import Fileinfo
 
 def scan_directory(target_directory:str) -> tuple[List[Fileinfo], List[str]]:
     files = List[Fileinfo] = []

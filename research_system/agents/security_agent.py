@@ -1,7 +1,7 @@
 import json
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.messages import HumanMessage, SystemMessage
-from core.state import ReviewState, AgentFinding
+from research_system.core.state import ReviewState, AgentFinding
 from config import MODEL_NAME,MAX_TOKENS
 from typing import List
 
