@@ -12,3 +12,4 @@ EXCLUDED_DIRS = {
     "node_modules", ".git", "__pycache__",
     "venv", ".venv", "dist", "build", ".next"
 }
+OUTPUT_DIR = "output"
