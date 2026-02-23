@@ -40,4 +40,4 @@ def run_synthesizer_agent(state: ReviewState) -> ReviewState:
         "scan_errors": state["errors"],
     }
 
-    return {**state, "final_report": report}
+    return {"final_report": report}

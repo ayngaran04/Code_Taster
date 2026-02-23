@@ -1,4 +1,5 @@
-from typing import TypedDict, List, Dict , Optional
+from typing import TypedDict, List, Dict, Optional, Annotated
+import operator
 
 class Fileinfo(TypedDict):
     path:str
@@ -18,9 +19,9 @@ class ReviewState(TypedDict):
     target_directory: str
     files : List[Fileinfo]
 
-    secirity_findings : List[AgentFinding]
-    architectural_findings : List[AgentFinding]
+    security_findings : List[AgentFinding]
+    architecture_findings : List[AgentFinding]
     code_quality_findings : List[AgentFinding]
     
     final_report : Optional[str]
-    errors : List[str]
+    errors : Annotated[List[str], operator.add]
