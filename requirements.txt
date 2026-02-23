@@ -1,0 +1,14 @@
+# Core LangGraph & LangChain
+langgraph
+langchain
+langchain-core
+langchain-google-genai
+
+# Google Gemini
+google-generativeai
+
+# Terminal UI
+rich
+
+# Environment variables
+python-dotenv
