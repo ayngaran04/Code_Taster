@@ -1,4 +1,4 @@
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, END, START
 from research_system.core.state import ReviewState
 from research_system.agents.security_agent import run_security_agent
 from research_system.agents.architeture_agent import run_architecture_agent
@@ -18,5 +18,9 @@ def build_graph() -> StateGraph:
     graph.add_edge("architecture", "synthesizer")
     graph.add_edge("code_quality", "synthesizer")
     graph.add_edge("synthesizer", END)
+
+    graph.add_edge(START, "security")
+    graph.add_edge(START, "architecture")
+    graph.add_edge(START, "code_quality")
 
     return graph.compile()

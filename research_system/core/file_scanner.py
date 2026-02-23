@@ -4,8 +4,8 @@ from config import SUPPORTED_EXTENSIONS,MAX_FILE_SIZE_KB,MAX_TOKENS,EXCLUDED_DIR
 from research_system.core.state import Fileinfo
 
 def scan_directory(target_directory:str) -> tuple[List[Fileinfo], List[str]]:
-    files = List[Fileinfo] = []
-    errors = List[str] = [] 
+    files: List[Fileinfo] = []
+    errors: List[str] = []
        
 
     if not os.path.isdir(target_directory):
