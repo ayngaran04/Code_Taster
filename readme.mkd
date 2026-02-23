@@ -1,0 +1,199 @@
+# 🤖 Multi-Agent Code Review System
+
+A powerful AI-powered code review system built with **LangGraph** and **Google Gemini** that uses multiple specialized agents to analyze your codebase for security vulnerabilities, architecture issues, and code quality problems.
+
+---
+
+## 🧠 How It Works
+
+The system uses a **multi-agent graph** powered by [LangGraph](https://github.com/langchain-ai/langgraph) where three specialized AI agents run in parallel to review your code:
+
+```
+Your Codebase
+      │
+      ▼
+ File Scanner
+      │
+      ▼
+┌─────┴──────┐
+│            │
+▼            ▼            ▼
+Security   Architecture  Code Quality
+ Agent       Agent         Agent
+│            │              │
+└─────┬──────┘──────────────┘
+      │
+      ▼
+  Reporter
+      │
+      ▼
+ JSON + Markdown Reports
+```
+
+### 🕵️ Agents
+
+| Agent | Responsibilities |
+|-------|-----------------|
+| 🔐 **Security Agent** | Detects hardcoded credentials, SQL injection, shell injection, `eval()` usage, insecure deserialization, and more |
+| 🏛️ **Architecture Agent** | Identifies God classes, tight coupling, missing abstractions, circular dependencies, and design pattern violations |
+| ✨ **Code Quality Agent** | Finds unused variables, deeply nested code, long functions, missing docstrings, and style issues |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- Google Gemini API Key → [Get one here](https://makersuite.google.com/app/apikey)
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/multi-agent-code-review.git
+cd multi-agent-code-review
+```
+
+2. **Create and activate a virtual environment**
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+4. **Set up your API key**
+```bash
+cp .env.example .env
+# Edit .env and add your Google Gemini API key
+```
+
+```env
+GOOGLE_API_KEY=your_gemini_api_key_here
+```
+
+---
+
+## 📖 Usage
+
+Run the system on any directory:
+
+```bash
+python main.py /path/to/your/codebase
+```
+
+### Example
+
+```bash
+python main.py ./my_project
+```
+
+### Output
+
+After the scan completes, two reports are saved to the `output/` folder:
+
+- 📄 `output/report.json` — Machine-readable full report
+- 📝 `output/report.md` — Human-readable Markdown report
+
+---
+
+## 📊 Sample Output
+
+```
+🤖 Multi-Agent Code Review System
+
+📂 Scanning ./my_project...
+   Found 9 files to review.
+
+🚀 Running agents...
+
+⠋ Agents analyzing your codebase...
+
+📊 Results Summary
+Critical: 0  High: 12  Medium: 3  Low: 5  Info: 1
+
+✅ Reports saved:
+   JSON     → output/report.json
+   Markdown → output/report.md
+```
+
+---
+
+## 📁 Project Structure
+
+```
+multi-agent-code-review/
+├── main.py                        # Entry point
+├── config.py                      # Configuration (output dir, settings)
+├── requirements.txt               # Dependencies
+├── .env                           # API keys (not committed)
+├── output/                        # Generated reports
+│   ├── report.json
+│   └── report.md
+└── research_system/
+    ├── __init__.py
+    ├── core/
+    │   ├── __init__.py
+    │   ├── file_scanner.py        # Scans and reads codebase files
+    │   ├── graph.py               # LangGraph agent graph definition
+    │   └── state.py               # Shared state between agents
+    └── agents/
+        ├── __init__.py
+        ├── security_agent.py      # Security vulnerability detection
+        ├── architecture_agent.py  # Architecture analysis
+        ├── code_quality_agent.py  # Code quality analysis
+        └── reporter.py            # Aggregates findings into report
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| [LangGraph](https://github.com/langchain-ai/langgraph) | Multi-agent orchestration graph |
+| [LangChain](https://github.com/langchain-ai/langchain) | LLM integration framework |
+| [Google Gemini](https://deepmind.google/technologies/gemini/) | Underlying LLM for all agents |
+| [Rich](https://github.com/Textualize/rich) | Beautiful terminal output |
+
+---
+
+## 📋 Severity Levels
+
+| Level | Description |
+|-------|-------------|
+| 🔴 **Critical** | Immediate security risk, must fix now |
+| 🟠 **High** | Serious issue, fix before production |
+| 🟡 **Medium** | Should be addressed soon |
+| 🟢 **Low** | Minor improvements suggested |
+| ℹ️ **Info** | Informational observations |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-agent`)
+3. Commit your changes (`git commit -m 'Add new agent'`)
+4. Push to the branch (`git push origin feature/new-agent`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## ⭐ Acknowledgements
+
+- [LangGraph](https://github.com/langchain-ai/langgraph) for the amazing agent orchestration framework
+- [Google Gemini](https://deepmind.google/technologies/gemini/) for the powerful LLM capabilities
+- [LangChain](https://github.com/langchain-ai/langchain) for seamless LLM integration
