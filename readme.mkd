@@ -180,7 +180,6 @@ Contributions are welcome! Please:
 
 
 
-## Project was done by Ayngaran
 
 ## 📄 License
 
